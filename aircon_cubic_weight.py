@@ -1,14 +1,16 @@
 import requests
 
+############ function definitions #############
+
 
 def calculate_cubic_weight(product):
-    # Cubic weight is calculated by multiplying the length, height and width of the parcel (metres).
+    # Cubic weight calculated by multiplying length, height and width of the parcel (convert to metres).
     product_dimensions = product['size']
     length = product_dimensions['length']/100
     width = product_dimensions['width']/100
     height = product_dimensions['height']/100
 
-    # The result is then multiplied by the industry standard cubic weight conversion factor of 250.
+    # multiply by industry standard cubic weight conversion factor of 250.
     conv_factor = 250
 
     cubic_weight = length*width*height*conv_factor
@@ -35,7 +37,7 @@ def get_aircon_objects(api_stem):
     return all_aircon_objects
 
 
-### Main ###
+################ Main #################
 
 aircon_object_list = get_aircon_objects(f'/api/products/1')
 print(
