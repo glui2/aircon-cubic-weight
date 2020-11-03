@@ -44,9 +44,9 @@ print(
 cubic_weights = [calculate_cubic_weight(
     aircon_object) for aircon_object in aircon_object_list]
 print(
-    f"Cubic weight of each object in the Air-Conditioner category:\n {cubic_weights} \n")
+    f"Cubic weight of each object in the Air-Conditioner category (kg):\n {cubic_weights} \n")
 
 
 average_cubic_weight = sum(cubic_weights)/len(cubic_weights)
 print(
-    f"Average cubic weight of products in the Air-Conditioner category is: {average_cubic_weight}")
+    f"Average cubic weight of products in the Air-Conditioner category is: {average_cubic_weight} kg")
