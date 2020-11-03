@@ -1,9 +1,5 @@
 import requests
 
-# Hit Kogan API
-print(f'Sending GET request to API...')
-kogan_url = f'http://wp8m3he1wt.s3-website-ap-southeast-2.amazonaws.com'
-
 
 def calculate_cubic_weight(product):
     # Cubic weight is calculated by multiplying the length, height and width of the parcel (metres).
@@ -20,19 +16,17 @@ def calculate_cubic_weight(product):
 
 
 def get_aircon_objects(api_stem):
+    kogan_url = f'http://wp8m3he1wt.s3-website-ap-southeast-2.amazonaws.com'
     api = kogan_url + api_stem
+    print(f'GET aircon objects from {api}')
     response = requests.get(api)
     data = response.json()
     aircon_objects = []
+
     if data['next']:
         # recursive case: run this code until no more items to list
         new_stem = data['next']
-        print(new_stem)
         aircon_objects = get_aircon_objects(new_stem)
-
-    else:
-        # base case: start returning aircon objects once there are no more items to list
-        print(f"end of list!")
 
     current_aircon_objects = [product_object for product_object in data['objects']
                               if product_object['category'] == 'Air Conditioners']
@@ -40,6 +34,8 @@ def get_aircon_objects(api_stem):
     all_aircon_objects = current_aircon_objects + aircon_objects
     return all_aircon_objects
 
+
+### Main ###
 
 aircon_object_list = get_aircon_objects(f'/api/products/1')
 print(
