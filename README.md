@@ -43,3 +43,6 @@ After downloading the zip file and unzipping it in your desired location:
 1. To run the program, simply run
    `python aircon_cubic_weight.py`
    (or `python3 aircon_cubic_weight.py` if the above command defaults to python 2)
+2. To run the tests, simply run the following command:
+   `python -m unittest`
+   (or `python3 -m unittest` if the above command defaults to python 2)
