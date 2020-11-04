@@ -5,7 +5,7 @@ import requests
 # Function: calculate_cubic_weight
 # Inputs: takes an object from the Kogan API as an input
 # Purpose: calculates the cubic weight based on the dimensions specified in the object
-# Returns: cubic weight
+# Returns: cubic weight (kg)
 
 
 def calculate_cubic_weight(product):
@@ -33,7 +33,6 @@ def get_aircon_objects(api_stem):
     # form the api and retrieve data using a GET request
     kogan_url = f'http://wp8m3he1wt.s3-website-ap-southeast-2.amazonaws.com'
     api = kogan_url + api_stem
-    print(f'GET aircon objects from {api}')
     response = requests.get(api)
     data = response.json()
     aircon_objects = []
